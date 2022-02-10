@@ -13,17 +13,15 @@ class CocktailCell: UITableViewCell {
     @IBOutlet weak var cocktailNameLabel: UILabel!
     
     
-    
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configure(with cocktail: Cocktail) {
+        cocktailNameLabel.text = cocktail.strDrink
+        DispatchQueue.global().async {
+            guard let url = URL(string: cocktail.strDrinkThumb ?? "") else { return }
+            guard let imageData = try? Data(contentsOf: url) else { return }
+            DispatchQueue.main.async {
+                self.cocktailImage.image = UIImage(data: imageData)
+            }
+        }
     }
 
 }

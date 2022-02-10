@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rWD-cp-3kh">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Cocktails-->
+        <scene sceneID="Lv9-tM-vdW">
+            <objects>
+                <tableViewController id="EKF-WE-wQv" customClass="CockailListViewController" customModule="SearchCocktailsAPIApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="VIc-Fh-rvL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="114" id="PJ7-Jc-Kdw" customClass="CocktailCell" customModule="SearchCocktailsAPIApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="375" height="114"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PJ7-Jc-Kdw" id="PrO-ba-dP7">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ReE-ws-1ev">
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="114"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="140" id="ydD-g7-PNn"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Cocktail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3C-s9-hWK">
+                                            <rect key="frame" x="145" y="21" width="209" height="72"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ReE-ws-1ev" firstAttribute="top" secondItem="PrO-ba-dP7" secondAttribute="top" id="2IA-pc-OYx"/>
+                                        <constraint firstItem="ReE-ws-1ev" firstAttribute="leading" secondItem="PrO-ba-dP7" secondAttribute="leading" id="Dsm-qu-pZi"/>
+                                        <constraint firstItem="P3C-s9-hWK" firstAttribute="leading" secondItem="ReE-ws-1ev" secondAttribute="trailing" constant="5" id="MGs-vz-WNX"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="P3C-s9-hWK" secondAttribute="trailing" constant="5" id="Qa4-TF-6bj"/>
+                                        <constraint firstItem="P3C-s9-hWK" firstAttribute="top" secondItem="PrO-ba-dP7" secondAttribute="topMargin" constant="10" id="UyD-CB-qXY"/>
+                                        <constraint firstAttribute="bottom" secondItem="ReE-ws-1ev" secondAttribute="bottom" id="v2V-Vl-xF8"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="P3C-s9-hWK" secondAttribute="bottom" constant="10" id="xwZ-Sr-TFb"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cocktailImage" destination="ReE-ws-1ev" id="lMp-9q-27e"/>
+                                    <outlet property="cocktailNameLabel" destination="P3C-s9-hWK" id="UVu-w6-Z6l"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="EKF-WE-wQv" id="fKn-Ae-Bsh"/>
+                            <outlet property="delegate" destination="EKF-WE-wQv" id="99c-v3-nQx"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Cocktails" id="e1Z-1q-SSn"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Wx-ZW-duH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1992.8" y="97.601199400299862"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="W6T-ud-1M6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rWD-cp-3kh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5aw-GD-LuM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EKF-WE-wQv" kind="relationship" relationship="rootViewController" id="jdA-p8-6oO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g1p-b5-Fvr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1282" y="98"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
