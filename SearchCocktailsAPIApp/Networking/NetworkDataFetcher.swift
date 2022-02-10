@@ -7,8 +7,16 @@
 
 import Foundation
 
+enum NetworkError: Error {
+    case invalidURL
+    case noData
+    case decodingError
+}
+
 class NetworkDataFetcher {
     let networkService = NetworkService()
+    
+    static let shared = NetworkDataFetcher()
     
     func fetchTracks(urlString: String, response: @escaping (SearchResponse?) -> Void) {
         networkService.request(urlString: urlString) { (result) in
@@ -24,6 +32,22 @@ class NetworkDataFetcher {
             case .failure(let error):
                 print("Error received requesting data: \(error.localizedDescription)")
                 response(nil)
+            }
+        }
+    }
+    
+    func fetchImage(from url: String?, completion: @escaping(Result<Data, NetworkError>) -> Void) {
+        guard let url = URL(string: url ?? "") else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        DispatchQueue.global().async {
+            guard let imageData = try? Data(contentsOf: url) else {
+                completion(.failure(.noData))
+                return
+            }
+            DispatchQueue.main.async {
+                completion(.success(imageData))
             }
         }
     }

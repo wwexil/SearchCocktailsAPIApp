@@ -15,11 +15,12 @@ class CocktailCell: UITableViewCell {
     
     func configure(with cocktail: Cocktail) {
         cocktailNameLabel.text = cocktail.strDrink
-        DispatchQueue.global().async {
-            guard let url = URL(string: cocktail.strDrinkThumb ?? "") else { return }
-            guard let imageData = try? Data(contentsOf: url) else { return }
-            DispatchQueue.main.async {
+        NetworkDataFetcher.shared.fetchImage(from: cocktail.strDrinkThumb) { result in
+            switch result {
+            case .success(let imageData):
                 self.cocktailImage.image = UIImage(data: imageData)
+            case .failure(let error):
+                print(error)
             }
         }
     }
